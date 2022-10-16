@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/hevagog/catkin_ws/src/telos_control/build/devel/setup.sh

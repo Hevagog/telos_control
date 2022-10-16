@@ -1,0 +1,8 @@
+prefix=/home/hevagog/catkin_ws/src/telos_control/build/devel
+
+Name: telos_control
+Description: Description of telos_control
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

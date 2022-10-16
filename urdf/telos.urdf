@@ -1,0 +1,309 @@
+<?xml version='1.0'?>
+<robot name="telos">
+
+    <material name="white">
+        <color rgba="1 1 1 1"/>
+    </material>
+    <material name="bluepurple" >
+        <color rgba="0.35294117647058826 0.023529411764705882 0.9372549019607843 1.0" />
+    </material>
+    <material name="black">
+        <color rgba="0 0 0 1"/>
+    </material>   
+
+<!-- <static>true</static>    Ignores physics engine -->
+    <link name="base_link">
+       <!-- <pose>0 0 .258 0 0 0</pose> -->
+        <visual>
+            <geometry>
+                <box size=".1 0.39 0.052"/>
+            </geometry>
+            <origin rpy="0.0 0.0 0.0" xyz="0 0 0"/>
+            <material name="white"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size=".1 0.39 0.052"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="2.5"/>
+            <inertia ixx="0.032250833" ixy="0.0" ixz="0.0" iyy="0.002646667" iyz="0.0" izz="0.033770833"/>
+        </inertial>
+        
+    </link>
+
+    <link name='right_front_leg'>
+        <!-- <pose>.06 0.0875 .258</pose> -->
+        <visual>
+            <geometry>
+                <box size=".02 .145 .02"/>
+            </geometry>
+            <origin  xyz="0 -0.0625 0" rpy="0 0 0"/>
+            <material name="bluepurple"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.2 0.145 0.02"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.4"/>
+            <inertia ixx="0.002816668" ixy="0.0" ixz="0.0" iyy="0.002129168" iyz="0.0" izz="0.002816668"/>
+        </inertial>
+    </link>
+
+    <joint name="corpus_to_right_front_leg" type="revolute">
+        <axis xyz="1 0.0 1"/>
+        <limit lower="-1.253294755" upper="1.253294755" effort="1000.0" velocity="0.5"/>
+        <parent link="base_link"/>
+        <child link="right_front_leg"/>
+        <origin xyz="0.06 .15 0" rpy="0.785 0.0 0.0"/>
+    </joint> 
+
+    <link name='left_front_leg'>
+        <!-- <pose>-.06 0.0875 .258</pose> -->
+        <visual> 
+            <geometry>
+                <box size=".02 .145 .02"/>
+            </geometry>
+            <origin xyz="0 -0.0625 0" rpy="0.0 0.0 0.0"/>
+            <material name="bluepurple"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.2 0.145 0.02"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.4"/>
+            <inertia ixx="0.002816668" ixy="0.0" ixz="0.0" iyy="0.002129168" iyz="0.0" izz="0.002816668"/>
+        </inertial>
+    </link> 
+
+    <joint name="corpus_to_left_front_leg" type="revolute">
+        <axis xyz="1 0.0 1"/>
+        <limit lower="-1.253294755" upper="1.253294755" effort="1000.0" velocity="0.5"/>
+        <parent link="base_link"/>
+        <child link="left_front_leg"/>
+        <origin xyz="-0.06 .15 0" rpy="0.785 0.0 0.0"/>
+    </joint>
+
+    <link name='right_back_leg'>
+        <!-- <pose>.06 -0.2125 .258</pose> -->
+        <visual> 
+            <geometry>
+                <box size=".02 .145 .02"/>
+            </geometry>
+            <origin xyz="0 -0.0625 0" rpy="0.0 0.0 0.0"/>
+            <material name="bluepurple"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.2 0.145 0.02"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.4"/>
+            <inertia ixx="0.002816668" ixy="0.0" ixz="0.0" iyy="0.002129168" iyz="0.0" izz="0.002816668"/>
+        </inertial>
+    </link> 
+
+    <joint name="corpus_to_right_back_leg" type="revolute">
+        <axis xyz="1 0.0 1"/>
+        <limit lower="-1.253294755" upper="1.253294755" effort="1000.0" velocity="0.5"/>
+        <parent link="base_link"/>
+        <child link="right_back_leg"/>
+        <origin xyz=".06 -0.15 0" rpy="0.785 0.0 0.0"/>
+    </joint>
+
+    <link name='left_back_leg'>
+        <!-- <pose>-.06 -0.2125 .258</pose> -->
+        <visual> 
+            <geometry>
+                <box size=".02 .145 .02"/>
+            </geometry>
+            <origin xyz="0 -0.0625 0" rpy="0.0 0.0 0.0"/>
+            <material name="bluepurple"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.2 0.145 0.02"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.4"/>
+            <inertia ixx="0.002816668" ixy="0.0" ixz="0.0" iyy="0.002129168" iyz="0.0" izz="0.002816668"/>
+        </inertial>
+    </link>
+
+    <joint name="corpus_to_left_back_leg" type="revolute">
+        <axis xyz="1 0.0 1"/>
+        <limit lower="-1.253294755" upper="1.253294755" effort="1000.0" velocity="0.5"/>
+        <parent link="base_link"/>
+        <child link="left_back_leg"/>
+        <origin xyz="-.06 -0.15 0" rpy="0.785 0.0 0.0"/>
+    </joint> 
+
+    <link name='right_front_feet'>
+        <!-- <pose> .06 0.025 .258</pose>  -->
+        <visual> 
+            <geometry>
+                <box size=".02 .145 .02"/>
+            </geometry>
+            <origin xyz=".0 -0.0625 0"/>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.2 0.145 0.02"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.1"/>
+            <inertia ixx="0.000704167" ixy="0.0" ixz="0.0" iyy="0.000532292" iyz="0.0" izz="0.000704167"/>
+        </inertial>
+    </link> 
+
+    <joint name="front_right_feet" type="revolute">
+        <axis xyz="1 0.0 0.0"/>
+        <limit lower="-0.785" upper="0.785" effort="1000.0" velocity="0.5"/>
+        <parent link="right_front_leg"/>
+        <child link="right_front_feet"/>
+        <origin xyz=" 0 -0.145 0" rpy="1.57 0.0 0.0"/>
+    </joint> 
+
+    <link name='left_front_feet'>
+        <!-- <pose> .06 0.025 .258</pose>  -->
+        <visual> 
+            <geometry>
+                <box size=".02 .145 .02"/>
+            </geometry>
+            <origin xyz=".0 -0.0625 0"/>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.2 0.145 0.02"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.1"/>
+            <inertia ixx="0.000704167" ixy="0.0" ixz="0.0" iyy="0.000532292" iyz="0.0" izz="0.000704167"/>
+        </inertial>
+    </link> 
+
+    <joint name="front_left_feet" type="revolute">
+        <axis xyz="1 0.0 0.0"/>
+        <limit lower="-0.785" upper="0.785" effort="1000.0" velocity="0.5"/>
+        <parent link="left_front_leg"/>
+        <child link="left_front_feet"/>
+        <origin xyz=" 0 -0.145 0" rpy="1.57 0.0 0.0"/>
+    </joint> 
+
+    <link name='right_back_feet'>
+        <!-- <pose> .06 0.025 .258</pose>  -->
+        <visual> 
+            <geometry>
+                <box size=".02 .145 .02"/>
+            </geometry>
+            <origin xyz=".0 -0.0625 0"/>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.2 0.145 0.02"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.1"/>
+            <inertia ixx="0.000704167" ixy="0.0" ixz="0.0" iyy="0.000532292" iyz="0.0" izz="0.000704167"/>
+        </inertial>
+    </link> 
+
+    <joint name="back_right_feet" type="revolute">
+        <axis xyz="1 0.0 0.0"/>
+        <limit lower="-0.785" upper="0.785" effort="1000.0" velocity="0.5"/>
+        <parent link="right_back_leg"/>
+        <child link="right_back_feet"/>
+        <origin xyz=" 0 -0.145 0" rpy="1.57 0.0 0.0"/>
+    </joint> 
+
+    <link name='left_back_feet'>
+        <!-- <pose> .06 0.025 .258</pose>  -->
+        <visual> 
+            <geometry>
+                <box size=".02 .145 .02"/>
+            </geometry>
+            <origin xyz=".0 -0.0625 0"/>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.2 0.145 0.02"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.1"/>
+            <inertia ixx="0.000704167" ixy="0.0" ixz="0.0" iyy="0.000532292" iyz="0.0" izz="0.000704167"/>
+        </inertial>
+    </link> 
+
+    <joint name="back_left_feet" type="revolute">
+        <axis xyz="1 0.0 0.0"/>
+        <limit lower="-0.785" upper="0.785" effort="1000.0" velocity="0.5"/>
+        <parent link="left_back_leg"/>
+        <child link="left_back_feet"/>
+        <origin xyz=" 0 -0.145 0" rpy="1.57 0.0 0.0"/>
+    </joint> 
+
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/telos</robotNamespace>
+        </plugin>
+    </gazebo>
+
+    <transmission name="tranRF1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="corpus_to_right_front_leg">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motorRF1">
+            <mechanicalReduction>1.88</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+    </transmission>
+
+    <transmission name="tranRF2">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="corpus_to_right_front_leg">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motorRF2">
+            <mechanicalReduction>"1.88"</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+    </transmission>
+
+    <transmission name="tranRF3">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="front_right_feet">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motorRF3">
+            <mechanicalReduction>1.5</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+    </transmission>
+
+    <transmission name="tran1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="corpus_to_right_front_leg">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor1">
+            <mechanicalReduction>1.88</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+    </transmission>
+</robot>

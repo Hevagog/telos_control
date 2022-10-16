@@ -1,0 +1,7 @@
+<launch>
+    <param name="robot_description" command="$(find telos_control)/urdf/teloss.urdf"/>
+
+
+
+    <node name="rviz" pkg="rviz" type="rviz"/>
+</launch>

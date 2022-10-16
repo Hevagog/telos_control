@@ -1,0 +1,37 @@
+<launch>
+  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find telos_control)/worlds/telos.world"/>
+    <arg name="paused" value="true"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="recording" value="false"/>
+    <arg name="debug" value="false"/>
+    <!-- more default parameters can be changed here -->
+  </include>
+
+  <!-- Spawn a robot into Gazebo -->
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find telos_control)/urdf/teloss.urdf -urdf -z 0.21 -model telos" />
+
+   <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find telos_control)/config/telos_control2.yaml" command="load"/>
+
+  <!-- Load controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+	output="screen" ns="/telos" args="joint_state_controller
+            joint2_position_controller
+            joint3_position_controller
+            joint5_position_controller
+            joint6_position_controller
+            joint8_position_controller
+            joint9_position_controller
+            joint11_position_controller
+            joint12_position_controller"/>
+
+   <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+    respawn="false" output="screen">
+    <remap from="/joint_states" to="/rrbot/joint_states" />
+  </node>
+  
+</launch>
